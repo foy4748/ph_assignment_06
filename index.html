@@ -10,6 +10,8 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
@@ -112,6 +114,51 @@
       <section class="container news">
         <div class="container">
           <div class="row row-cols-1" id="news-container"></div>
+          <!-- News content will be constructed from API Call -->
+          <div class="col">
+            <div class="singleNews d-md-flex">
+              <div
+                class="thumbnail d-flex justify-content-center align-items-center"
+              >
+                <img
+                  src="https://www.mydiscprofile.com/en-gd/_images/homepage-free-personality-test.png"
+                />
+              </div>
+              <div class="content p-5">
+                <article class="writings">
+                  <h1>Catchy Title</h1>
+                  <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Blanditiis perferendis provident quo fuga eius similique,
+                    ratione atque corrupti eum vitae reprehenderit rerum vel, in
+                    animi error, porro eligendi ex quibusdam!
+                  </p>
+                </article>
+
+                <div
+                  class="info d-md-flex justify-content-between align-items-center"
+                >
+                  <div class="author d-flex">
+                    <div class="author-img">
+                      <img
+                        class="author-img"
+                        src="https://randomuser.me/api/portraits/thumb/men/75.jpg"
+                        alt=""
+                      />
+                    </div>
+                    <div class="author-info px-3">
+                      <h5>Takku Man</h5>
+                      <p>Some Date</p>
+                    </div>
+                  </div>
+                  <div class="views">
+                    <h5>1.5M views</h5>
+                  </div>
+                  <div class="ratings">>>>>></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

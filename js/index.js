@@ -52,25 +52,49 @@ function renderNews({ data }) {
 
   const newsContainer = document.getElementById("news-container");
   sortedData.forEach((item) => {
-    const { title, thumbnail_url, details } = item;
+    const { title, thumbnail_url, details, author, total_view } = item;
     const col = document.createElement("div");
     col.classList.add("col");
     const template = `
-              <div class="singleNews d-md-flex">
-                <div
-                  class="thumbnail d-flex justify-content-center align-items-center"
-                >
-                  <img
-                    src="${thumbnail_url}"
-                  />
-                </div>
-                <div class="content p-5">
+            <div class="singleNews d-md-flex">
+              <div
+                class="thumbnail d-flex justify-content-center align-items-center"
+              >
+                <img
+                  src="${thumbnail_url}"
+                />
+              </div>
+              <div class="content p-5">
+                <article class="writings">
                   <h1>${title}</h1>
                   <p>
-				  ${details.slice(0, 400) + "..."}
+					${details.slice(0, 300) + " ..."}
                   </p>
+                </article>
+
+                <div
+                  class="info d-md-flex justify-content-between align-items-center"
+                >
+                  <div class="author d-flex">
+                    <div class="author-img">
+                      <img
+                        class="author-img"
+                        src="${author.img}"
+                        alt=""
+                      />
+                    </div>
+                    <div class="author-info px-3">
+                      <h5>${author.name}</h5>
+                      <p>${author.published_date}</p>
+                    </div>
+                  </div>
+                  <div class="views">
+                    <h5>${total_view}</h5>
+                  </div>
+                  <div class="ratings">>>>>></div>
                 </div>
               </div>
+            </div>
 	  `;
     col.innerHTML = template;
     newsContainer.append(col);
