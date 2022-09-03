@@ -1,4 +1,4 @@
-console.log("index.js is connected");
+//console.log("index.js is connected");
 
 async function fetchData(URL, FUNC) {
   try {
@@ -24,11 +24,12 @@ function renderCategory({ data: { news_category } }) {
   news_category.forEach(({ category_id, category_name }) => {
     const template = `
               <li class="nav-item" onclick="fetchNews('${category_id}')">
-                <a class="nav-link" aria-current="page" href="#">${category_name}</a>
+                <a class="nav-link" aria-current="page" href="#" data-category-id=${category_id}>${category_name}</a>
               </li>
 		`;
     categoryNav.innerHTML += template;
   });
+  categoryNav.firstElementChild.click();
 }
 
 function fetchNews(categoryId) {
@@ -37,11 +38,18 @@ function fetchNews(categoryId) {
 }
 
 function renderNews({ data }) {
+  const categoryNav = document.getElementById("category-nav");
+  const currentCategory = categoryNav.querySelector(
+    `[data-category-id='${data[0] ? data[0].category_id : ""}']`
+  );
+
   //Rendering number of news available to the corresponding category
   const numOfNews = document.getElementById("number-of-news");
   numOfNews.textContent = "";
   numOfNews.textContent = data.length
-    ? `${data.length} news found`
+    ? `${data.length} news found in ${
+        currentCategory ? currentCategory.textContent : ""
+      }`
     : "No news found";
 
   //Sorting the News based on Number of Views
@@ -90,9 +98,9 @@ function renderNews({ data }) {
                     </div>
                   </div>
                   <div class="views">
-                    <h5>${total_view}</h5>
+                    <h5>${total_view} views</h5>
                   </div>
-                  <div class="ratings">>>>>></div>
+                  <div class="modal-trigger"><i class="fa-solid fa-circle-arrow-right"></i></div>
                 </div>
               </div>
             </div>
