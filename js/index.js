@@ -108,7 +108,9 @@ function renderNews({ data }) {
                   <div class="views">
                     <h5>${
                       total_view || total_view === 0
-                        ? total_view + " views"
+                        ? '<i class="fa-regular fa-eye"></i>  ' +
+                          total_view +
+                          " views"
                         : "No data available"
                     } </h5>
                   </div>
