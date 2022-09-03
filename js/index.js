@@ -9,6 +9,11 @@ const fetchData = async (URL, FUNC) => {
   try {
     const response = await fetch(URL);
     const data = await response.json();
+
+    //Embedding the used URL in data
+    data.usedUrl = URL;
+
+    //Calling the Render Function using the data
     FUNC(data);
   } catch (error) {
     //Handling ERROR for BONUS MARKS
@@ -51,7 +56,6 @@ const fetchNews = (categoryId) => {
     menu.classList.add("collapsed");
     menu.nextElementSibling.classList.remove("show");
   }
-  console.log(menu);
 
   //Showing Loading Spin for Bonus Marks
   //while loading the API
@@ -108,13 +112,13 @@ function renderCategory({ data: { news_category } }) {
   categoryNav.firstElementChild.firstElementChild.click();
 }
 
-function renderNews({ data }) {
+function renderNews({ data, usedUrl }) {
   const newsContainer = document.getElementById("news-container");
 
   //Grabbing placeholders
   const categoryNav = document.getElementById("category-nav");
   const currentCategory = categoryNav.querySelector(
-    `[data-category-id='${data[0] ? data[0].category_id : ""}']`
+    `[data-category-id='${usedUrl.slice(-2)}']`
   );
 
   //Rendering number of news available to the corresponding category
@@ -125,7 +129,7 @@ function renderNews({ data }) {
     ? `${data.length} news found in ${
         currentCategory ? currentCategory.textContent : ""
       }`
-    : "No news found";
+    : `No news found in ${currentCategory.textContent}`;
 
   //Sorting the News based on Number of Views
   //for BONUS MARKS
