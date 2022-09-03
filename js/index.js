@@ -33,6 +33,17 @@ const fetchCategory = () => {
 fetchCategory();
 
 const fetchNews = (categoryId) => {
+  //Switching Category Navigation Indicator
+
+  //Cleaning Active status from all category link
+  const ul = this.event.target.parentElement.parentElement;
+  Array.from(ul.children).forEach((item) =>
+    item.firstElementChild.classList.remove("active")
+  );
+
+  //Adding Active status indicator on clicked nav link
+  this.event.target.classList.add("active");
+
   //Showing Loading Spin for Bonus Marks
   //while loading the API
   const categoryNewsURL = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
@@ -80,7 +91,7 @@ function renderCategory({ data: { news_category } }) {
   });
 
   //The first category is active by default
-  categoryNav.firstElementChild.click();
+  categoryNav.firstElementChild.firstElementChild.click();
 }
 
 function renderNews({ data }) {

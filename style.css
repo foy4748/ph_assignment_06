@@ -48,6 +48,8 @@ body {
 .active {
   color: var(--primary-color) !important;
   text-shadow: gray;
+  font-weight: 700;
+  border-bottom: 1px solid darkgray;
 }
 
 /* Customizing Font Awesome Icons */
