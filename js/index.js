@@ -33,11 +33,30 @@ function fetchCategory() {
 fetchCategory();
 
 function fetchNews(categoryId) {
+  //Showing Loading Spin for Bonus Marks
+  //while loading the API
   const categoryNewsURL = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
+  const newsContainer = document.getElementById("news-container");
+  newsContainer.innerHTML = `
+  <div class="d-flex justify-content-center">
+	<div class="loader "></div>
+  </div> `;
+
+  //Fetching and flowing the data
+  //to renderNews function
   fetchData(categoryNewsURL, renderNews);
 }
 
 function fetchNewsDetails(news_id) {
+  const newsModal = document.getElementById("news-modal");
+  newsModal.innerHTML = `
+  <div class="d-flex justify-content-center">
+	<div class="loader "></div>
+  </div> `;
+
+  const modalTitle = document.querySelector(".modal-title");
+  modalTitle.textContent = "";
+
   const newsDetailURL = `https://openapi.programming-hero.com/api/news/${news_id}`;
   fetchData(newsDetailURL, renderNewsDetailsInModal);
 }
@@ -64,72 +83,9 @@ function renderCategory({ data: { news_category } }) {
   categoryNav.firstElementChild.click();
 }
 
-function renderNewsDetailsInModal({ data }) {
-  const [_newsDetails] = [data];
-  const newsDetails = _newsDetails[0];
-
-  //Destructuring necessary info
-  const { title, image_url, details, author, total_view } = newsDetails;
-  const { img: author_img, name: author_name, published_date } = author;
-
-  //Grabbing Modal
-  const newsModal = document.getElementById("news-modal");
-  const modalTitle = document.querySelector(".modal-title");
-
-  //Creating Modal
-  modalTitle.textContent = "";
-  modalTitle.textContent = title;
-
-  const template = `
-	  <div class="d-flex justify-content-center modal-img">
-		<img class="news-modal-img img img-fluid" src="${image_url}" alt=""/>
-	  </div>
-
-                <div
-                  class="info d-md-flex justify-content-between align-items-center mt-3"
-                >
-                  <div class="author d-flex">
-                    <div class="author-img">
-                      <img
-                        class="author-img"
-                        src="${author_img}"
-                        alt=""
-                      />
-                    </div>
-                    <div class="author-info px-3">
-                      <h5>${
-                        author_name ? author_name : "No data available"
-                      }</h5>
-                      <p>${
-                        published_date
-                          ? moment(published_date).format("DD MMMM, YYYY")
-                          : "No data available"
-                      }</p>
-                    </div>
-                  </div>
-                  <div class="views">
-                    <h5>${
-                      total_view || total_view === 0
-                        ? '<i class="fa-regular fa-eye"></i>  ' +
-                          total_view +
-                          " views"
-                        : "No data available"
-                    } </h5>
-                  </div>
-			  </div>
-
-
-
-	  <div className="content">
-		  <p>${details}</p>
-	  </div>
-	`;
-
-  newsModal.innerHTML = "";
-  newsModal.innerHTML = template;
-}
-
 function renderNews({ data }) {
+  const newsContainer = document.getElementById("news-container");
+
   //Grabbing placeholders
   const categoryNav = document.getElementById("category-nav");
   const currentCategory = categoryNav.querySelector(
@@ -151,7 +107,6 @@ function renderNews({ data }) {
     if (prev.total_view > next.total_view) return -1;
   });
 
-  const newsContainer = document.getElementById("news-container");
   newsContainer.innerHTML = "";
   sortedData.forEach((item) => {
     //Destructuring necessary info
@@ -228,4 +183,69 @@ function renderNews({ data }) {
     col.innerHTML = template;
     newsContainer.append(col);
   });
+}
+
+function renderNewsDetailsInModal({ data }) {
+  const [_newsDetails] = [data];
+  const newsDetails = _newsDetails[0];
+
+  //Destructuring necessary info
+  const { title, image_url, details, author, total_view } = newsDetails;
+  const { img: author_img, name: author_name, published_date } = author;
+
+  //Grabbing Modal
+  const newsModal = document.getElementById("news-modal");
+  const modalTitle = document.querySelector(".modal-title");
+
+  //Creating Modal
+  modalTitle.textContent = "";
+  modalTitle.textContent = title;
+
+  const template = `
+	  <div class="d-flex justify-content-center modal-img">
+		<img class="news-modal-img img img-fluid" src="${image_url}" alt=""/>
+	  </div>
+
+                <div
+                  class="info d-md-flex justify-content-between align-items-center mt-3"
+                >
+                  <div class="author d-flex">
+                    <div class="author-img">
+                      <img
+                        class="author-img"
+                        src="${author_img}"
+                        alt=""
+                      />
+                    </div>
+                    <div class="author-info px-3">
+                      <h5>${
+                        author_name ? author_name : "No data available"
+                      }</h5>
+                      <p>${
+                        published_date
+                          ? moment(published_date).format("DD MMMM, YYYY")
+                          : "No data available"
+                      }</p>
+                    </div>
+                  </div>
+                  <div class="views">
+                    <h5>${
+                      total_view || total_view === 0
+                        ? '<i class="fa-regular fa-eye"></i>  ' +
+                          total_view +
+                          " views"
+                        : "No data available"
+                    } </h5>
+                  </div>
+			  </div>
+
+
+
+	  <div className="content">
+		  <p>${details}</p>
+	  </div>
+	`;
+
+  newsModal.innerHTML = "";
+  newsModal.innerHTML = template;
 }
