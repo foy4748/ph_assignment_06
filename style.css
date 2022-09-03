@@ -52,6 +52,15 @@ body {
   border-bottom: 1px solid darkgray;
 }
 
+.navbar-toggler {
+  color: white;
+  background-color: var(--primary-color);
+  margin: 0.52rem 0;
+}
+.navbar-toggler-icon {
+  color: white !important;
+}
+
 /* Customizing Font Awesome Icons */
 .fa-circle-arrow-right {
   font-size: 2.75rem;
