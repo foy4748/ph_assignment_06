@@ -116,6 +116,42 @@
         </div>
       </nav>
     </header>
+
+    <!-- IMPORT Modal  -->
+    <div
+      class="modal fade"
+      id="newsModal"
+      tabindex="-1"
+      aria-labelledby="newsModalLabel"
+      aria-hidden="true"
+    >
+      <!-- Scrollable modal -->
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel"></h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="news-modal"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END of Modal  -->
+
     <main>
       <section class="container news">
         <div class="container">
@@ -124,6 +160,7 @@
         </div>
       </section>
     </main>
+
     <!-- ----------------------------- JavaScripts ----------------------- -->
     <!-- IMPORT momentJs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"></script>

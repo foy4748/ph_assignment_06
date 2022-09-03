@@ -114,7 +114,15 @@ function renderNews({ data }) {
                         : "No data available"
                     } </h5>
                   </div>
-                  <div class="modal-trigger"><i class="fa-solid fa-circle-arrow-right"></i></div>
+                  <div class="modal-trigger">
+					  <!-- Button trigger modal -->
+					  <a
+						data-bs-toggle="modal"
+						data-bs-target="#newsModal"
+					  >
+					  <i class="fa-solid fa-circle-arrow-right"></i>
+					  </a>
+				  </div>
                 </div>
               </div>
             </div>
