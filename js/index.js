@@ -44,6 +44,15 @@ const fetchNews = (categoryId) => {
   //Adding Active status indicator on clicked nav link
   this.event.target.classList.add("active");
 
+  //Menu button
+  const menu = document.querySelector(".navbar-toggler");
+  if (menu.getAttribute("aria-expanded")) {
+    menu.setAttribute("aria-expanded", false);
+    menu.classList.add("collapsed");
+    menu.nextElementSibling.classList.remove("show");
+  }
+  console.log(menu);
+
   //Showing Loading Spin for Bonus Marks
   //while loading the API
   const categoryNewsURL = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
