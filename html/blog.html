@@ -15,6 +15,14 @@
     <link rel="stylesheet" href="../style.css" />
     <title>Blog | The Essential News</title>
   </head>
+  <style>
+    .accordion-button {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1.25rem;
+    }
+  </style>
   <body>
     <header>
       <!-- Top Navigation Bar -->
@@ -62,29 +70,42 @@
             data-bs-parent="#accordionFlushExample"
           >
             <div class="accordion-body">
-              <div>
-                <p>
-                  Flexbox and Grid, these are native layout designing tool of
-                  CSS.
-                </p>
-                <p>
-                  Flexbox is a one dimensional layout mechanism, which means you
-                  have controll over one axes. This follows "Content First"
-                  approach, focuses on content flow.
-                </p>
-                <p>
-                  Unlike Flexbox, CSS Grid has more controls over dimensions. It
-                  is two dimensional layout system, which follows "Layout First"
-                  approach. It ensures the placement of the elements first.
-                </p>
-                <p>
-                  <a
-                    href="https://screeching-plough-4fd.notion.site/Video-8-10-Responsive-CSS-Layout-Summary-3aff1140076f4d38a83a34333e248758"
-                    class="btn theme-background"
-                    >Learn More</a
-                  >
-                </p>
-              </div>
+              <p>
+                Don't use <strong>var</strong>. That's the number one rule while
+                dealing with JS variables. Why?
+              </p>
+              <p>
+                <strong>var</strong> has Global Scope. It can be Redefined and
+                Re-assigned, regardless of scope!! Hence, value of a
+                <strong>var</strong>
+                variable can be changed very easily. It will be a nightmare if
+                some third-party package has the same variable name as
+                custom/user authored JS code. It will cause a undetectable
+                logical error. It will require to define variables using unique
+                names throughout the entire project as well as not changing
+                their variable in some function/block scope. All this factors
+                makes it very error prone while coding in JS.
+              </p>
+              <p>
+                <strong>let</strong> and <strong>const</strong> solves the
+                issues mentioned above. Because both of them are block scoped.
+                None of them can be Re-defined in the same scope.
+              </p>
+              <p>
+                <strong>let</strong> can be Re-assigned in the same scope. That
+                means it's value can be modified by assiging new value.
+              </p>
+              <p>
+                <strong>const</strong> doesn't allow Re-assigne, that means it's
+                value can't changed after assigning it's value while
+                defining./declaring.
+              </p>
+              <a
+                class="btn btn-primary"
+                href="https://www.freecodecamp.org/news/var-let-and-const-whats-the-difference/"
+                target="_blank"
+                >Learn More</a
+              >
             </div>
           </div>
         </div>
@@ -109,31 +130,45 @@
           >
             <div class="accordion-body">
               <p>
-                Bootstrap and Tailwind both of them are CSS framework for quick
-                and responsive web design.
+                The main difference between an Arrow function and Regular
+                Function is <b><i>"this"</i></b>
               </p>
-
               <p>
-                Bootstrap is a "Component First" CSS framework. Anyone can copy
-                the prebuilt components from the bootstrap's website and use
-                them in no time. Even, developer with zero CSS knowledge may use
-                this.
+                Arrow function doesn't have its own <b><i>"this"</i></b>
+                which means it doesn't switch context. Regular Function's
+                <b><i>"this"</i></b>
+                indicates the context. The context could be the object that
+                contains the function as method. The context could be execution,
+                the object the method operates on.
               </p>
-
               <p>
-                On the other hand, Tailwind is a "Utility First" CSS framework.
-                You may construct your own components by combining utilities.
-                This framework offers high customization with the cost of
-                prebuilt components.
+                If "this" keyword is used in Arrow function, most of the cases
+                it considers "this" in global context.
               </p>
-
+              <br />
               <p>
-                <a
-                  class="btn theme-background"
-                  href="https://www.geeksforgeeks.org/tailwind-css-vs-bootstrap/#:~:text=Bootstrap%20comes%20with%20a%20set,that%20makes%20them%20look%20identical."
-                  >Learn More</a
-                >
+                There is another difference, which should be considered
+                seriously
               </p>
+              <p>
+                Regular function can be called/executed first and defined later
+                down the code. The code won't break.
+              </p>
+              <p>
+                But if you do this in case of Arrow function, the code will
+                break. The Arrow function should be defined first, then it can
+                be called/executed
+              </p>
+              <p>
+                Last things last, some people think Arrow function as syntactic
+                sugar/shorthand for regular function. But it is NOT
+              </p>
+              <a
+                class="btn btn-primary"
+                href="https://eloquentjavascript.net/03_functions.html"
+                target="_blank"
+                >Learn More</a
+              >
             </div>
           </div>
         </div>
@@ -176,6 +211,13 @@
                 array. It returns a new array containing the calculated items
                 done by the callback function
               </p>
+              <a
+                class="btn btn-primary"
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
+                target="_blank"
+                >Learn More</a
+              >
+              <br />
               <br />
               <h5>Array.prototype.forEach()</h5>
               <p>
@@ -193,6 +235,13 @@
                 <strong>forEach </strong> over map() if there is nothing to
                 return
               </p>
+              <a
+                class="btn btn-primary"
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach"
+                target="_blank"
+                >Learn More</a
+              >
+              <br />
               <br />
               <h5>Array.prototype.filter()</h5>
               <p>
@@ -206,6 +255,13 @@
                 <strong>filter()</strong> method iterates through each item and
                 returns an array containing the filtered item.
               </p>
+              <a
+                class="btn btn-primary"
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"
+                target="_blank"
+                >Learn More</a
+              >
+              <br />
               <br />
               <h5>Array.prototype.find()</h5>
               <p><strong>find()</strong> is very similar to filter() method.</p>
@@ -215,6 +271,12 @@
                 returns only the item that caused the callback function return
                 true.
               </p>
+              <a
+                class="btn btn-primary"
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find"
+                target="_blank"
+                >Learn More</a
+              >
             </div>
           </div>
         </div>
@@ -261,7 +323,7 @@
 
               <p>
                 <a
-                  class="btn theme-background"
+                  class="btn btn-primary"
                   href="https://medium.com/nerd-for-tech/concatenated-strings-vs-es6-template-literals-in-react-fa96e78c7da7"
                   target="_blank"
                   >Learn More</a
