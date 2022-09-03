@@ -51,6 +51,7 @@ function renderNews({ data }) {
   });
 
   const newsContainer = document.getElementById("news-container");
+  newsContainer.innerHTML = "";
   sortedData.forEach((item) => {
     const { title, thumbnail_url, details, author, total_view } = item;
     const col = document.createElement("div");

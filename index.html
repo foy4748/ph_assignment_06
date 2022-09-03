@@ -4,6 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>HOME | The Essential News</title>
+    <!-- IMPORT Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/3824a5a891.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- IMPORT Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -11,34 +18,23 @@
       crossorigin="anonymous"
     />
 
+    <!-- User Authored Style Sheets -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
       <!-- Top Navigation Bar -->
-      <nav class="navbar navbar-expand-lg bg-light">
+      <nav class="navbar bg-light">
         <div class="container">
-          <a class="navbar-brand" href="#">Essential News</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown1"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+          <a class="navbar-brand" href="#"
+            ><span class="big">E</span> ssential News</a
           >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div
-            class="collapse navbar-collapse d-lg-flex justify-content-lg-end"
-            id="navbarNavDropdown1"
-          >
-            <ul class="navbar-nav">
-              <li class="nav-item">
+          <div class="d-lg-flex justify-content-lg-end">
+            <ul class="navbar-nav d-flex flex-row">
+              <li class="nav-item p-3">
                 <a class="nav-link active" aria-current="page" href="#">News</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item p-3">
                 <a class="nav-link" href="#">Blog</a>
               </li>
             </ul>
@@ -48,6 +44,9 @@
       <!-- Categories Navigation Panel -->
       <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid d-flex justify-content-end">
+          <p class="navbar-toggler mt-3 p-2">
+            News Categories <i class="fa-solid fa-arrow-right"></i>
+          </p>
           <button
             class="navbar-toggler"
             type="button"
@@ -75,9 +74,11 @@
             <!-- Number of News available to a category will display after API call -->
           </p>
         </div>
-        <div class="container d-md-flex justify-container-md-between">
+        <div class="container d-md-flex justify-container-md-between mb-5">
           <div class="container sortedBy">
-            <p>Sorted by: <input type="text" name="" id="" /></p>
+            <p>
+              Sorted by: <span class="border rounded px-2">Most Viewed</span>
+            </p>
           </div>
           <div
             class="container btn-group"
@@ -93,7 +94,7 @@
               checked
             />
             <label class="btn btn-outline-primary" for="btnradio1"
-              >Radio 1</label
+              >Most Viewed</label
             >
 
             <input
@@ -104,7 +105,7 @@
               autocomplete="ff"
             />
             <label class="btn btn-outline-primary" for="btnradio3"
-              >Radio 3</label
+              >Trendy</label
             >
           </div>
         </div>

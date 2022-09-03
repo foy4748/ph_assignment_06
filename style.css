@@ -3,3 +3,16 @@
   width: 3rem;
   border-radius: 100%;
 }
+
+.big {
+  font-size: 2rem;
+  background-color: #0d6efd;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.active {
+  color: #0d6efd !important;
+  text-shadow: gray;
+}
