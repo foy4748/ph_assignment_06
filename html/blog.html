@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- IMPORT Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+
+    <!-- User Authored Style Sheets -->
+    <link rel="stylesheet" href="../style.css" />
+    <title>Blog | The Essential News</title>
+  </head>
+  <body>
+    <header>
+      <!-- Top Navigation Bar -->
+      <nav class="navbar bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="/index.html"
+            ><span class="big">E</span> ssential News</a
+          >
+          <div class="d-lg-flex justify-content-lg-end">
+            <ul class="navbar-nav d-flex flex-row">
+              <li class="nav-item p-3">
+                <a class="nav-link" aria-current="page" href="/index.html"
+                  >News</a
+                >
+              </li>
+              <li class="nav-item p-3">
+                <a class="nav-link active" href="html/blog.html">Blog</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container">
+      <!-- Accordion -->
+      <div class="mt-4 accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button
+              class="accordion-button collapsed fw-bold"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseOne"
+              aria-expanded="false"
+              aria-controls="flush-collapseOne"
+            >
+              1. Differences between var, let, const
+            </button>
+          </h2>
+          <div
+            id="flush-collapseOne"
+            class="accordion-collapse collapse"
+            aria-labelledby="flush-headingOne"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              <div>
+                <p>
+                  Flexbox and Grid, these are native layout designing tool of
+                  CSS.
+                </p>
+                <p>
+                  Flexbox is a one dimensional layout mechanism, which means you
+                  have controll over one axes. This follows "Content First"
+                  approach, focuses on content flow.
+                </p>
+                <p>
+                  Unlike Flexbox, CSS Grid has more controls over dimensions. It
+                  is two dimensional layout system, which follows "Layout First"
+                  approach. It ensures the placement of the elements first.
+                </p>
+                <p>
+                  <a
+                    href="https://screeching-plough-4fd.notion.site/Video-8-10-Responsive-CSS-Layout-Summary-3aff1140076f4d38a83a34333e248758"
+                    class="btn theme-background"
+                    >Learn More</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button
+              class="accordion-button collapsed fw-bold"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseTwo"
+              aria-expanded="false"
+              aria-controls="flush-collapseTwo"
+            >
+              2. Differences between Arrow Function & Regular Functions.
+            </button>
+          </h2>
+          <div
+            id="flush-collapseTwo"
+            class="accordion-collapse collapse"
+            aria-labelledby="flush-headingTwo"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              <p>
+                Bootstrap and Tailwind both of them are CSS framework for quick
+                and responsive web design.
+              </p>
+
+              <p>
+                Bootstrap is a "Component First" CSS framework. Anyone can copy
+                the prebuilt components from the bootstrap's website and use
+                them in no time. Even, developer with zero CSS knowledge may use
+                this.
+              </p>
+
+              <p>
+                On the other hand, Tailwind is a "Utility First" CSS framework.
+                You may construct your own components by combining utilities.
+                This framework offers high customization with the cost of
+                prebuilt components.
+              </p>
+
+              <p>
+                <a
+                  class="btn theme-background"
+                  href="https://www.geeksforgeeks.org/tailwind-css-vs-bootstrap/#:~:text=Bootstrap%20comes%20with%20a%20set,that%20makes%20them%20look%20identical."
+                  >Learn More</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button
+              class="accordion-button collapsed fw-bold"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseThree"
+              aria-expanded="false"
+              aria-controls="flush-collapseThree"
+            >
+              3. Differences map, forEach, filter, find methods
+            </button>
+          </h2>
+          <div
+            id="flush-collapseThree"
+            class="accordion-collapse collapse"
+            aria-labelledby="flush-headingThree"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              <p>
+                "CSS Box Model" is a fundamental topic of CSS. From the point of
+                view of CSS, it sees the HTML elements as rectangular boxes.
+                This box may have dimenstions defined by the CSS properties such
+                as
+              </p>
+              <ol>
+                <li>Width</li>
+                <li>Height</li>
+                <li>Padding</li>
+                <li>Border</li>
+                <li>Margin</li>
+              </ol>
+              <p>
+                Those boxes may contain other boxes. CSS properties may
+                propagate/inherited to it's children boxes.
+              </p>
+              <p>
+                <a
+                  class="btn theme-background"
+                  href="https://web.dev/learn/css/box-model/#a-useful-analogy"
+                  >Learn More</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingFour">
+            <button
+              class="accordion-button collapsed fw-bold"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#flush-collapseFour"
+              aria-expanded="false"
+              aria-controls="flush-collapseFour"
+            >
+              4. Why you should use template literal?
+            </button>
+          </h2>
+          <div
+            id="flush-collapseFour"
+            class="accordion-collapse collapse"
+            aria-labelledby="flush-headingFour"
+            data-bs-parent="#accordionFlushExample"
+          >
+            <div class="accordion-body">
+              <p>
+                In JavaScript, string data-type is immutable. Once a string is
+                created or parsed, it can't be changed. When we try to
+                concatenate or do some sort of operations on string, new
+                instance of the string is created. This could be a performance
+                issue if the string is very large.
+              </p>
+
+              <p>
+                Template literal solves this problem with ease. Instead of
+                concatenating strings and variables we want in a whole string,
+                template literal allow us to put variable in the literal. Which
+                makes the production of string dynamic as well as no replication
+                of the string instance.
+              </p>
+              <p>
+                Also, Template literal allows multiple line coding which is
+                convenient while constructing HTML elements in JS. It makes the
+                code more concise.
+              </p>
+
+              <p>
+                <a
+                  class="btn theme-background"
+                  href="https://medium.com/nerd-for-tech/concatenated-strings-vs-es6-template-literals-in-react-fa96e78c7da7"
+                  target="_blank"
+                  >Learn More</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END of Accordion -->
+    </div>
+
+    <!-- ----------------------------- JavaScripts ----------------------- -->
+    <!-- IMPORT Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
