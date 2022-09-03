@@ -93,12 +93,22 @@ function renderNews({ data }) {
                       />
                     </div>
                     <div class="author-info px-3">
-                      <h5>${author.name}</h5>
-                      <p>${author.published_date}</p>
+                      <h5>${
+                        author.name ? author.name : "No data available"
+                      }</h5>
+                      <p>${
+                        author.published_date
+                          ? author.published_date
+                          : "No data available"
+                      }</p>
                     </div>
                   </div>
                   <div class="views">
-                    <h5>${total_view} views</h5>
+                    <h5>${
+                      total_view || total_view === 0
+                        ? total_view + " views"
+                        : "No data available"
+                    } </h5>
                   </div>
                   <div class="modal-trigger"><i class="fa-solid fa-circle-arrow-right"></i></div>
                 </div>
