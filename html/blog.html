@@ -158,28 +158,62 @@
           >
             <div class="accordion-body">
               <p>
-                "CSS Box Model" is a fundamental topic of CSS. From the point of
-                view of CSS, it sees the HTML elements as rectangular boxes.
-                This box may have dimenstions defined by the CSS properties such
-                as
+                All of the methods mentioned in the question are array methods
               </p>
-              <ol>
-                <li>Width</li>
-                <li>Height</li>
-                <li>Padding</li>
-                <li>Border</li>
-                <li>Margin</li>
-              </ol>
+              <h5>Array.prototype.map()</h5>
               <p>
-                Those boxes may contain other boxes. CSS properties may
-                propagate/inherited to it's children boxes.
+                <strong>map()</strong> stands for
+                <i>Morph Array Piece-by-Piece.</i>
+                <strong>someArray.map() </strong>has a parameter takes a
+                function as argument also known as callback function. As
+                <strong>map()</strong> function iterates through each item of
+                the array, the function can access the item in its first
+                parameter. The operations we want to do using each item is
+                written in the callback function.
               </p>
               <p>
-                <a
-                  class="btn theme-background"
-                  href="https://web.dev/learn/css/box-model/#a-useful-analogy"
-                  >Learn More</a
-                >
+                <strong>map()</strong> function doesn't change any item of the
+                array. It returns a new array containing the calculated items
+                done by the callback function
+              </p>
+              <br />
+              <h5>Array.prototype.forEach()</h5>
+              <p>
+                <strong>forEach()</strong> method is very similar to map()
+                method.
+              </p>
+              <p>
+                Unlike map() method <strong>forEach()</strong> doesn't return
+                anything. It's very useful for adding eventlistener to a array
+                of elements which doesn't require to return anything.
+              </p>
+              <p>
+                Since <strong>forEach()</strong> doesn't return anything, it's
+                memory efficient than map(). We should choose
+                <strong>forEach </strong> over map() if there is nothing to
+                return
+              </p>
+              <br />
+              <h5>Array.prototype.filter()</h5>
+              <p>
+                Just like other array methods, <strong>filter()</strong> takes a
+                function as argument. The function have the access the current
+                item as the first paramter.
+              </p>
+              <p>
+                The function contains the filter logic. If the function return
+                true, then the item is picked.
+                <strong>filter()</strong> method iterates through each item and
+                returns an array containing the filtered item.
+              </p>
+              <br />
+              <h5>Array.prototype.find()</h5>
+              <p><strong>find()</strong> is very similar to filter() method.</p>
+              <p>
+                Instead of iterating through all of the array item, the
+                iteration stops if the callback function returns true. Hence, it
+                returns only the item that caused the callback function return
+                true.
               </p>
             </div>
           </div>
