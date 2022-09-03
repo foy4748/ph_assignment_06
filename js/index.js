@@ -133,13 +133,14 @@ function renderNews({ data }) {
 
     //Creating News
     const col = document.createElement("div");
-    col.classList.add("col");
+    col.classList.add("col", "border", "rounded", "shadow", "my-3", "p-2");
     const template = `
             <div class="singleNews d-md-flex">
               <div
                 class="thumbnail d-flex justify-content-center align-items-center"
               >
                 <img
+				class="mx-3"
                   src="${thumbnail_url}"
                 />
               </div>
@@ -147,7 +148,7 @@ function renderNews({ data }) {
                 <article class="writings">
                   <h1>${title}</h1>
                   <p>
-					${details.slice(0, 300) + " ..."}
+					${details.slice(0, 350) + " ..."}
                   </p>
                 </article>
 
