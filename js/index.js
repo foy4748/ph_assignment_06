@@ -99,7 +99,9 @@ function renderNews({ data }) {
                         author_name ? author_name : "No data available"
                       }</h5>
                       <p>${
-                        published_date ? published_date : "No data available"
+                        published_date
+                          ? moment(published_date).format("DD MMMM, YYYY")
+                          : "No data available"
                       }</p>
                     </div>
                   </div>
