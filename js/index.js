@@ -1,5 +1,10 @@
 //console.log("index.js is connected");
 
+/*
+ * Common Fetcher Function
+ *
+ */
+
 async function fetchData(URL, FUNC) {
   try {
     const response = await fetch(URL);
@@ -12,25 +17,20 @@ async function fetchData(URL, FUNC) {
   }
 }
 
+/*
+ * Fetcher Functions
+ *
+ */
+
 function fetchCategory() {
   categoryURL = "https://openapi.programming-hero.com/api/news/categories";
   fetchData(categoryURL, renderCategory);
 }
 
+//Calling fetch category
+//when the page is rendering
+//for first time
 fetchCategory();
-
-function renderCategory({ data: { news_category } }) {
-  const categoryNav = document.getElementById("category-nav");
-  news_category.forEach(({ category_id, category_name }) => {
-    const template = `
-              <li class="nav-item" onclick="fetchNews('${category_id}')">
-                <a class="nav-link" aria-current="page" href="#" data-category-id=${category_id}>${category_name}</a>
-              </li>
-		`;
-    categoryNav.innerHTML += template;
-  });
-  categoryNav.firstElementChild.click();
-}
 
 function fetchNews(categoryId) {
   const categoryNewsURL = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
@@ -42,27 +42,41 @@ function fetchNewsDetails(news_id) {
   fetchData(newsDetailURL, renderNewsDetailsInModal);
 }
 
+/*
+ * Render Functions
+ *
+ */
+
+function renderCategory({ data: { news_category } }) {
+  const categoryNav = document.getElementById("category-nav");
+
+  //Creating Category Nav Links
+  news_category.forEach(({ category_id, category_name }) => {
+    const template = `
+              <li class="nav-item" onclick="fetchNews('${category_id}')">
+                <a class="nav-link" aria-current="page" href="#" data-category-id=${category_id}>${category_name}</a>
+              </li>
+		`;
+    categoryNav.innerHTML += template;
+  });
+
+  //The first category is active by default
+  categoryNav.firstElementChild.click();
+}
+
 function renderNewsDetailsInModal({ data }) {
   const [_newsDetails] = [data];
   const newsDetails = _newsDetails[0];
-  console.log(newsDetails);
 
   //Destructuring necessary info
-  const {
-    title,
-    image_url,
-    details,
-    author,
-    total_view,
-    _id: news_id,
-  } = newsDetails;
-
+  const { title, image_url, details, author, total_view } = newsDetails;
   const { img: author_img, name: author_name, published_date } = author;
 
   //Grabbing Modal
   const newsModal = document.getElementById("news-modal");
   const modalTitle = document.querySelector(".modal-title");
 
+  //Creating Modal
   modalTitle.textContent = "";
   modalTitle.textContent = title;
 
@@ -116,6 +130,7 @@ function renderNewsDetailsInModal({ data }) {
 }
 
 function renderNews({ data }) {
+  //Grabbing placeholders
   const categoryNav = document.getElementById("category-nav");
   const currentCategory = categoryNav.querySelector(
     `[data-category-id='${data[0] ? data[0].category_id : ""}']`
@@ -139,6 +154,7 @@ function renderNews({ data }) {
   const newsContainer = document.getElementById("news-container");
   newsContainer.innerHTML = "";
   sortedData.forEach((item) => {
+    //Destructuring necessary info
     const {
       title,
       thumbnail_url,
@@ -147,9 +163,9 @@ function renderNews({ data }) {
       total_view,
       _id: news_id,
     } = item;
-
     const { img: author_img, name: author_name, published_date } = author;
 
+    //Creating News
     const col = document.createElement("div");
     col.classList.add("col");
     const template = `
