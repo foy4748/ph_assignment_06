@@ -53,6 +53,11 @@ const fetchNews = (categoryId) => {
 	<div class="loader "></div>
   </div> `;
 
+  //Hiding the number of news available
+  //while loading the API
+  const numOfNews = document.getElementById("number-of-news");
+  numOfNews.textContent = "";
+
   //Fetching and flowing the data
   //to renderNews function
   fetchData(categoryNewsURL, renderNews);
@@ -104,6 +109,7 @@ function renderNews({ data }) {
   );
 
   //Rendering number of news available to the corresponding category
+  //for BONUS MARKS
   const numOfNews = document.getElementById("number-of-news");
   numOfNews.textContent = "";
   numOfNews.textContent = data.length
