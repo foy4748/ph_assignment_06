@@ -5,7 +5,7 @@
  *
  */
 
-async function fetchData(URL, FUNC) {
+const fetchData = async (URL, FUNC) => {
   try {
     const response = await fetch(URL);
     const data = await response.json();
@@ -13,26 +13,26 @@ async function fetchData(URL, FUNC) {
   } catch (error) {
     //Handling ERROR for BONUS MARKS
     console.log(error);
-    FUNC(false);
+    //FUNC(false);
   }
-}
+};
 
 /*
  * Fetcher Functions
  *
  */
 
-function fetchCategory() {
+const fetchCategory = () => {
   categoryURL = "https://openapi.programming-hero.com/api/news/categories";
   fetchData(categoryURL, renderCategory);
-}
+};
 
 //Calling fetch category
 //when the page is rendering
 //for first time
 fetchCategory();
 
-function fetchNews(categoryId) {
+const fetchNews = (categoryId) => {
   //Showing Loading Spin for Bonus Marks
   //while loading the API
   const categoryNewsURL = `https://openapi.programming-hero.com/api/news/category/${categoryId}`;
@@ -45,9 +45,9 @@ function fetchNews(categoryId) {
   //Fetching and flowing the data
   //to renderNews function
   fetchData(categoryNewsURL, renderNews);
-}
+};
 
-function fetchNewsDetails(news_id) {
+const fetchNewsDetails = (news_id) => {
   const newsModal = document.getElementById("news-modal");
   newsModal.innerHTML = `
   <div class="d-flex justify-content-center">
@@ -59,7 +59,7 @@ function fetchNewsDetails(news_id) {
 
   const newsDetailURL = `https://openapi.programming-hero.com/api/news/${news_id}`;
   fetchData(newsDetailURL, renderNewsDetailsInModal);
-}
+};
 
 /*
  * Render Functions
