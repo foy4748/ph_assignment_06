@@ -37,6 +37,84 @@ function fetchNews(categoryId) {
   fetchData(categoryNewsURL, renderNews);
 }
 
+function fetchNewsDetails(news_id) {
+  const newsDetailURL = `https://openapi.programming-hero.com/api/news/${news_id}`;
+  fetchData(newsDetailURL, renderNewsDetailsInModal);
+}
+
+function renderNewsDetailsInModal({ data }) {
+  const [_newsDetails] = [data];
+  const newsDetails = _newsDetails[0];
+  console.log(newsDetails);
+
+  //Destructuring necessary info
+  const {
+    title,
+    image_url,
+    details,
+    author,
+    total_view,
+    _id: news_id,
+  } = newsDetails;
+
+  const { img: author_img, name: author_name, published_date } = author;
+
+  //Grabbing Modal
+  const newsModal = document.getElementById("news-modal");
+  const modalTitle = document.querySelector(".modal-title");
+
+  modalTitle.textContent = "";
+  modalTitle.textContent = title;
+
+  const template = `
+	  <div class="d-flex justify-content-center modal-img">
+		<img class="news-modal-img img img-fluid" src="${image_url}" alt=""/>
+	  </div>
+
+                <div
+                  class="info d-md-flex justify-content-between align-items-center mt-3"
+                >
+                  <div class="author d-flex">
+                    <div class="author-img">
+                      <img
+                        class="author-img"
+                        src="${author_img}"
+                        alt=""
+                      />
+                    </div>
+                    <div class="author-info px-3">
+                      <h5>${
+                        author_name ? author_name : "No data available"
+                      }</h5>
+                      <p>${
+                        published_date
+                          ? moment(published_date).format("DD MMMM, YYYY")
+                          : "No data available"
+                      }</p>
+                    </div>
+                  </div>
+                  <div class="views">
+                    <h5>${
+                      total_view || total_view === 0
+                        ? '<i class="fa-regular fa-eye"></i>  ' +
+                          total_view +
+                          " views"
+                        : "No data available"
+                    } </h5>
+                  </div>
+			  </div>
+
+
+
+	  <div className="content">
+		  <p>${details}</p>
+	  </div>
+	`;
+
+  newsModal.innerHTML = "";
+  newsModal.innerHTML = template;
+}
+
 function renderNews({ data }) {
   const categoryNav = document.getElementById("category-nav");
   const currentCategory = categoryNav.querySelector(
@@ -61,7 +139,15 @@ function renderNews({ data }) {
   const newsContainer = document.getElementById("news-container");
   newsContainer.innerHTML = "";
   sortedData.forEach((item) => {
-    const { title, thumbnail_url, details, author, total_view } = item;
+    const {
+      title,
+      thumbnail_url,
+      details,
+      author,
+      total_view,
+      _id: news_id,
+    } = item;
+
     const { img: author_img, name: author_name, published_date } = author;
 
     const col = document.createElement("div");
@@ -114,13 +200,9 @@ function renderNews({ data }) {
                         : "No data available"
                     } </h5>
                   </div>
-                  <div class="modal-trigger">
-					  <!-- Button trigger modal -->
-					  <a
-						data-bs-toggle="modal"
-						data-bs-target="#newsModal"
-					  >
-					  <i class="fa-solid fa-circle-arrow-right"></i>
+                  <div class="modal-trigger" onclick="fetchNewsDetails('${news_id}')">
+					  <a data-bs-toggle="modal" data-bs-target="#newsModal" href="#">
+						  <i class="fa-solid fa-circle-arrow-right"></i>
 					  </a>
 				  </div>
                 </div>
