@@ -62,6 +62,8 @@ function renderNews({ data }) {
   newsContainer.innerHTML = "";
   sortedData.forEach((item) => {
     const { title, thumbnail_url, details, author, total_view } = item;
+    const { img: author_img, name: author_name, published_date } = author;
+
     const col = document.createElement("div");
     col.classList.add("col");
     const template = `
@@ -88,18 +90,16 @@ function renderNews({ data }) {
                     <div class="author-img">
                       <img
                         class="author-img"
-                        src="${author.img}"
+                        src="${author_img}"
                         alt=""
                       />
                     </div>
                     <div class="author-info px-3">
                       <h5>${
-                        author.name ? author.name : "No data available"
+                        author_name ? author_name : "No data available"
                       }</h5>
                       <p>${
-                        author.published_date
-                          ? author.published_date
-                          : "No data available"
+                        published_date ? published_date : "No data available"
                       }</p>
                     </div>
                   </div>
