@@ -13,12 +13,19 @@ const fetchData = async (URL, FUNC) => {
     //Embedding the used URL in data
     data.usedUrl = URL;
 
+    //Embedding Error is False in data
+    data.error = false;
+
     //Calling the Render Function using the data
     FUNC(data);
   } catch (error) {
     //Handling ERROR for BONUS MARKS
     console.log(error);
-    //FUNC(false);
+
+    //Sending Error Object in Render function
+    //to indicate some error in UI
+    const errorObj = { error: true, message: error.message };
+    FUNC(errorObj);
   }
 };
 
@@ -38,7 +45,9 @@ const fetchCategory = () => {
 fetchCategory();
 
 const fetchNews = (categoryId) => {
-  //Switching Category Navigation Indicator
+  /*--- EXTRA FEATURE:
+   * Switching Category Navigation Indicator
+   */
 
   //Cleaning Active status from all category link
   const ul = this.event.target.parentElement.parentElement;
@@ -49,7 +58,10 @@ const fetchNews = (categoryId) => {
   //Adding Active status indicator on clicked nav link
   this.event.target.classList.add("active");
 
-  //Menu button
+  /* EXTRA FEATURE:
+   * Hiding Menu if Nav Item is clicked
+   * in Mobile View
+   */
   const menu = document.querySelector(".navbar-toggler");
   if (menu.getAttribute("aria-expanded")) {
     menu.setAttribute("aria-expanded", false);
@@ -95,9 +107,21 @@ const fetchNewsDetails = (news_id) => {
  *
  */
 
-function renderCategory({ data: { news_category } }) {
+function renderCategory({ error, data: { news_category } }) {
   const categoryNav = document.getElementById("category-nav");
 
+  //Showing some Error in UI
+  if (error) {
+    console.log(error);
+    categoryNav.innerHTML += `
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">
+					Something Went WRONG 🚫 Check Internet Connection. 📶
+				</a>
+              </li>`;
+    alert("Something went wrong");
+    return;
+  }
   //Creating Category Nav Links
   news_category.forEach(({ category_id, category_name }) => {
     const template = `
@@ -112,8 +136,20 @@ function renderCategory({ data: { news_category } }) {
   categoryNav.firstElementChild.firstElementChild.click();
 }
 
-function renderNews({ data, usedUrl }) {
+function renderNews({ error, data, usedUrl }) {
   const newsContainer = document.getElementById("news-container");
+
+  //Showing some Error in UI
+  if (error) {
+    newsContainer.innerHTML = `
+		  <div class="container">
+			  <p class="text-center">
+					Something Went WRONG 🚫 Check Internet Connection. 📶
+			  </p>
+		  </div>`;
+    alert("Something went wrong");
+    return;
+  }
 
   //Grabbing placeholders
   const categoryNav = document.getElementById("category-nav");
@@ -216,17 +252,29 @@ function renderNews({ data, usedUrl }) {
   });
 }
 
-function renderNewsDetailsInModal({ data }) {
+function renderNewsDetailsInModal({ error, data }) {
+  //Grabbing Modal
+  const newsModal = document.getElementById("news-modal");
+  const modalTitle = document.querySelector(".modal-title");
+
+  //Showing some Error in UI
+  if (error) {
+    newsModal.innerHTML = `
+		  <div class="container">
+			  <p class="text-center">
+					Something Went WRONG 🚫 Check Internet Connection. 📶
+			  </p>
+		  </div>`;
+    alert("Something went wrong");
+    return;
+  }
+
   const [_newsDetails] = [data];
   const newsDetails = _newsDetails[0];
 
   //Destructuring necessary info
   const { title, image_url, details, author, total_view } = newsDetails;
   const { img: author_img, name: author_name, published_date } = author;
-
-  //Grabbing Modal
-  const newsModal = document.getElementById("news-modal");
-  const modalTitle = document.querySelector(".modal-title");
 
   //Creating Modal
   modalTitle.textContent = "";
